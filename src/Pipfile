@@ -1,0 +1,20 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+torch = "*"
+boto3 = "*"
+comet-ml = "*"
+tqdm = "*"
+requests = "*"
+pyro-ppl = "==1.3.1"
+matplotlib = "*"
+scipy = "*"
+python-dotenv = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
