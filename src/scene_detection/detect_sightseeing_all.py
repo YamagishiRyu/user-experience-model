@@ -22,6 +22,10 @@ multiprocessing.log_to_stderr()
 logger = multiprocessing.get_logger()
 logger.setLevel(logging.DEBUG)
 
+load_dotenv(verbose=True)
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
 WORKING_DIR = 'scene_detection'
 
 def collect_data(file_name):
@@ -48,10 +52,10 @@ def download_image(identifier, url):
         raise RuntimeError(f'Error: Could not download image: {identifier}')
 
 def upload_s3(identifier):
-    session = boto3.Session(profile_name='magroup')
+    session = boto3.Session(profile_name=os.environ.get('PROFILE'))
     s3 = session.client('s3')
 
-    bucket_name = 'sightseeing-data'
+    bucket_name = os.environ.get('BUCKET')
     raw_photo_file_name = 'raw_photos/' + identifier + '.png'
     detected_photo_file_name = 'detected_photos/' + identifier + '.png'
 
@@ -63,10 +67,10 @@ def upload_s3(identifier):
         raise
 
 def upload_result():
-    session = boto3.Session(profile_name='magroup')
+    session = boto3.Session(profile_name=os.environ.get('BUCKET'))
     s3 = session.client('s3')
 
-    bucket_name = 'sightseeing-data'
+    bucket_name = os.environ.get('BUCKET')
     file_name = 'sightseeing_place.csv'
 
     try:
