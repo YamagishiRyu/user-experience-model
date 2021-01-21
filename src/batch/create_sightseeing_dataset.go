@@ -130,7 +130,7 @@ func writeData(cityName string, userBag *map[string]UserTime, sceneBag *map[stri
 	reader := csv.NewReader(file)
 	reader.Comma = ';'
 
-	outputFileName := "data/sightseeing/" + cityName + ".csv"
+	outputFileName := "data/" + cityName + ".csv"
 	outputFile, err := os.OpenFile(outputFileName, os.O_WRONLY|os.O_CREATE, 0600)
 	if err != nil {
 		fmt.Println(outputFileName + " output file not found")
