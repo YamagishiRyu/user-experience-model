@@ -16,13 +16,13 @@ Golang version is 15.2.
 Directory: `batch/`. 
 This is code for csv data processing.
 
-1. Create Scene Detection Result Data (create_sightseeing_dataset.go)
+1. Create Scene Detection Result Data (create_sightseeing_dataset.go).  
 This collect needed information for user-experience model inference.
 
-2. Create bag of words (create_bag_for_sightseeing.go)
+2. Create bag of words (create_bag_for_sightseeing.go).  
 This code indexes uses, locations and words from scene detection result data.  
 
-3. Create geomf input data (create_kyoto_data_for_geomf.go, create_data_for_geomf.go)
+3. Create geomf input data (create_kyoto_data_for_geomf.go, create_data_for_geomf.go).  
 These codes create input data for each dataset for GeoMF++ Matlab program.
 Data format details [here](https://github.com/DefuLian/recsys#data-preprocessing).
 
@@ -53,7 +53,7 @@ You can run program at this root directory like this:
 $ pipenv run python leaning/base_for_sightseeing.py -f ../data/ids/id-Edin.csv
 ```
 
-You can also run debug model.
+You can also run debug mode.
 ```sh
 $ pipenv run python leaning/st_for_sightseeing.py -f ../data/ids/id-Kyoto.csv --debug
 ```
